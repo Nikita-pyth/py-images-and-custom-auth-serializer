@@ -1,12 +1,6 @@
-import os
-import uuid
-
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.conf import settings
-from django.template.defaultfilters import slugify
-
-from cinema.utils import create_custom_path
 
 
 class CinemaHall(models.Model):
@@ -47,7 +41,7 @@ class Movie(models.Model):
     duration = models.IntegerField()
     genres = models.ManyToManyField(Genre)
     actors = models.ManyToManyField(Actor)
-    image = models.ImageField(null=True, upload_to=create_custom_path)
+    image = models.ImageField(null=True, upload_to="create_custom_path")
 
     class Meta:
         ordering = ["title"]
